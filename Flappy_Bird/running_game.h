@@ -70,7 +70,7 @@ bool game_process() {
 		bird.moving(time);
 		bird.ban_exit();
 		bird.update(time);
-		
+		score_counting(bird, pipe, size, score);
 		window.clear();
 		window.draw(background.get_sprite());
 		for (int i = 0; i < size; i++)

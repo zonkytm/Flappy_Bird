@@ -89,3 +89,19 @@ void collisions(player& player_, pipes* pipe, int size) {
 
 
 }
+
+
+
+void score_counting(player& player_, pipes* pipe, int size,int& score) {
+
+	for (int i = 0; i < size; i++)
+	{
+
+
+		if (pipe[i].get_pipe_up().getPosition().x + pipe[i].get_pipe_up().getGlobalBounds().width / 2 < player_.get_sprite().getPosition().x and !pipe[i].ischecked)
+		{
+			score++;
+			pipe[i].ischecked=1;
+		}
+	}
+}

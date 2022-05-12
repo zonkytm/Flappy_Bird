@@ -9,9 +9,12 @@ using namespace std;
 class pipes
 {
 
+
+
 	Texture pipes_texture;
 	Sprite pipes_sprite_up, pipes_sprite_down;
 public:
+	bool ischecked;
 	pipes()
 	{
 
@@ -24,20 +27,13 @@ public:
 		pipes_sprite_down.setOrigin(pipes_sprite_down.getGlobalBounds().width / 2, 0);
 		pipes_sprite_down.setScale(3,10);
 		pipes_sprite_up.setScale(3, 10);
-
+		ischecked = 0;
 		
 		
 		
 	}
 
-
-
-	void set_position(Vector2f position) {
-		pipes_sprite_up.setPosition(position.x,position.y);
-		pipes_sprite_down.setPosition(pipes_sprite_up.getPosition().x,pipes_sprite_up.getPosition().y+150);
-		
-	}
-
+	void set_position(Vector2f position);
 	void moving(float speed,float time,int& score);
 
 	Sprite get_pipe_up() {

@@ -69,3 +69,6 @@ public:
 
 
 void collisions(player& player_, pipes* pipe, int size); 
+
+
+void score_counting(player& player_, pipes* pipe, int size, int& score);
