@@ -18,6 +18,7 @@ enum Statement {
 class player
 {
 	Statement state;
+	Image player_image;
 	Texture player_texture;
 	Sprite player_sprite;
 	float CurrenFrame, boostfall, velocity,speed;
@@ -27,10 +28,12 @@ public:
 
 	player(Vector2f position)
 	{
-		player_texture.loadFromFile("img/player.png");
+		player_image.loadFromFile("img/player.png");
+		player_image.createMaskFromColor(Color::White);
+		player_texture.loadFromImage(player_image);
 		player_sprite.setTexture(player_texture);
 		player_sprite.setOrigin(player_sprite.getGlobalBounds().width / 2, player_sprite.getGlobalBounds().height / 2);
-		player_sprite.setTextureRect(IntRect(0, 0, 16, 16));
+		player_sprite.setTextureRect(IntRect(0, 3, 16, 12));
 		player_sprite.setScale(2, 2);
 		state = jump;
 		player_sprite.setPosition(position);

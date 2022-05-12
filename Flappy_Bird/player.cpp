@@ -18,7 +18,7 @@ void player::update(float time) {
 		{
 			CurrenFrame -= 3;
 		}
-		player_sprite.setTextureRect(IntRect(16 * (int)CurrenFrame, 0, 16, 16));
+		player_sprite.setTextureRect(IntRect(16 * (int)CurrenFrame, 3, 16, 12));
 
 
 		break;
