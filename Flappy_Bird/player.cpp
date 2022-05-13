@@ -43,7 +43,7 @@ void player::ban_exit() {
 	if (player_sprite.getPosition().y - player_sprite.getGlobalBounds().height / 2 < 0) {
 
 		player_sprite.setPosition(Vector2f(player_sprite.getPosition().x, 0 + player_sprite.getGlobalBounds().height / 2));
-
+		state = dead;
 
 	}
 	if (state != dead)

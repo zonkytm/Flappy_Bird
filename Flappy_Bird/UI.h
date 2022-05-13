@@ -35,14 +35,14 @@ class Game_texts {
 	Font font;
 	Text game_text;
 public:
-	Game_texts(int font_size, string text) {
+	Game_texts(int font_size, string text, Vector2f position) {
 		font.loadFromFile("font/Flappy-Bird.ttf");
 		game_text.setString(text);
 		game_text.setCharacterSize(font_size);
 		game_text.setStyle(Text::Bold);
 		game_text.setFont(font);
 		game_text.setOrigin(game_text.getGlobalBounds().width / 2, game_text.getGlobalBounds().height / 2);
-		game_text.setPosition(512/2,0);
+		game_text.setPosition(position);
 		game_text.setOutlineThickness(1);
 		game_text.setOutlineColor(Color::Black);
 	}
