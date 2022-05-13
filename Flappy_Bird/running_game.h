@@ -9,8 +9,9 @@ using namespace sf;
 
 RenderWindow window(sf::VideoMode(512, 512), "FLappy Bird");
 
+int Best_score = 0;
 
-bool game_process() {
+bool game_process(int &Best_score) {
 
 	player bird(Vector2f(200, 200));
 
@@ -34,8 +35,11 @@ bool game_process() {
 		
 	}
 	
-	Game_texts score_text(75,to_string(score), Vector2f(512/2,0)), loose_text(75,"Try again!",Vector2f(512/2, retry_button.Get_sprite().getPosition().y-retry_button.Get_sprite().getGlobalBounds().height/2-100));
-	score_text.setFillColor(Color::Yellow);
+	Game_texts score_text(75,to_string(score), Vector2f(512/2,0)), 
+		best_score_text(75, to_string(score), Vector2f(512 / 2-150, retry_button.Get_sprite().getPosition().y - retry_button.Get_sprite().getGlobalBounds().height / 2 - 100)),
+		loose_text(75,"Try again!",Vector2f(512/2, best_score_text.get_game_text().getPosition().y- best_score_text.get_game_text().getGlobalBounds().height/2-100));
+	best_score_text.setFillColor(Color::Yellow);
+	score_text.setFillColor(Color::White);
 	loose_text.setFillColor(Color::Red);
 
 
@@ -129,12 +133,19 @@ bool game_process() {
 		window.draw(pause.Get_sprite());
 		if (bird.get_state() == dead)
 		{
+			if (score>Best_score)
+			{
+				Best_score = score;
+				
+			}
+			best_score_text.set_string("Best score "+to_string(Best_score));
 			window.draw(retry_button.Get_sprite());
 			window.draw(loose_text.get_game_text());
-
+			window.draw(best_score_text.get_game_text());
+			
 		}
 		window.display();
-
+		
 
 
 	}
@@ -150,9 +161,10 @@ bool game_process() {
 
 void game() {
 
-	if (game_process())
+	if (game_process(Best_score))
 	{
 		return game();
 	}
+	
 }
 
